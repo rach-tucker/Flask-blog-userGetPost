@@ -1,8 +1,10 @@
 from flask import request
 from . import api
+from .auth import basic_auth
 from app.models import Post, User
 
-@api.route('/')
+@api.route('/token')
+@basic_auth.login_required
 def index():
     return 'Hello this is the API'
 
